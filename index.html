@@ -1,45 +1,623 @@
-const profile = {
-  name: 'Hema Prajapati',
-  headline: 'Report Developer · Data Analysis & Business Intelligence',
-  location: 'United States',
-  openTo: 'ML Engineer, AI Data Analyst, BI Developer',
-  links: {
-    linkedin: 'https://www.linkedin.com/in/your-linkedin',
-    github: 'https://github.com/your-github',
-    email: 'hema002@yahoo.com',
-    resume: 'resume.pdf',
-    avatar: 'your-photo.jpg'
-  },
-  summary: 'Experienced Report Developer specializing in data analysis, report design, and dashboard creation. Proven ability to extract data from multiple sources and create dynamic reports to meet business needs.',
-  experience: [
-    {
-      role: 'Senior Report Developer',
-      company: 'Ridgewood Energy',
-      period: 'Year – Present',
-      blurb: 'Specializing in BI solutions, reporting, and dashboard design to drive business insights.',
-      bullets: [
-        'Designed and deployed reports using **Crystal Reports**, **SSRS**, and **Power BI**.',
-        'Developed optimized **SQL queries & stored procedures** to support data pipelines.',
-        'Automated reporting workflows, improving efficiency and reducing manual effort.'
-      ],
-      skills: ['Crystal Reports', 'SSRS', 'Power BI', 'SQL', 'SAP B1', 'Python']
-    }
-  ],
-  projects: [
-    {
-      name: 'Power BI Sales Dashboard',
-      url: '#',
-      blurb: 'Interactive executive dashboard integrating multiple data sources to track KPIs.',
-      bullets: [
-        'Reduced reporting time by 50% with automated data refresh.',
-        'Improved business decision-making by visualizing sales trends and customer data.'
-      ]
-    }
-  ],
-  skills: ['Crystal Reports','SSRS','Power BI','SQL','SAP B1','Python'],
-  certifications: [],
-  education: [],
-  publications: [],
-  talks: [],
-  volunteering: []
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f2ef;
+            color: rgba(0,0,0,.9);
+            line-height: 1.33;
+        }
+
+        .container {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 8px 24px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0a66c2;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(0,0,0,.6);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: rgba(0,0,0,.9);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -17px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 2px;
+            background: rgba(0,0,0,.9);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 60px;
+            padding: 24px 0;
+        }
+
+        .profile-section {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08);
+            overflow: hidden;
+        }
+
+        .cover-photo {
+            height: 202px;
+            background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+            position: relative;
+        }
+
+        .profile-info {
+            padding: 24px;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 152px;
+            height: 152px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a66c2, #004182);
+            position: absolute;
+            top: -76px;
+            left: 24px;
+            border: 4px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .profile-details {
+            margin-left: 176px;
+            margin-top: 12px;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: rgba(0,0,0,.9);
+            margin-bottom: 4px;
+        }
+
+        .profile-headline {
+            font-size: 20px;
+            color: rgba(0,0,0,.6);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .profile-location {
+            color: rgba(0,0,0,.6);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        .stat {
+            color: #0a66c2;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* About Section */
+        .section {
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08);
+        }
+
+        .section-header {
+            padding: 24px 24px 0 24px;
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: rgba(0,0,0,.9);
+            margin-bottom: 8px;
+        }
+
+        .section-content {
+            padding: 12px 24px 24px 24px;
+        }
+
+        .about-text {
+            color: rgba(0,0,0,.9);
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Experience/Projects Section */
+        .experience-item {
+            padding: 24px;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .experience-logo {
+            width: 48px;
+            height: 48px;
+            background: #0a66c2;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .experience-details h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: rgba(0,0,0,.9);
+            margin-bottom: 2px;
+        }
+
+        .experience-company {
+            font-size: 14px;
+            color: rgba(0,0,0,.6);
+            margin-bottom: 4px;
+        }
+
+        .experience-duration {
+            font-size: 12px;
+            color: rgba(0,0,0,.6);
+            margin-bottom: 8px;
+        }
+
+        .experience-description {
+            font-size: 14px;
+            color: rgba(0,0,0,.9);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: #f3f2ef;
+            color: rgba(0,0,0,.6);
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(0,0,0,.08);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            padding: 24px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+        }
+
+        .skill-icon {
+            width: 32px;
+            height: 32px;
+            background: #0a66c2;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .skill-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(0,0,0,.9);
+            margin-bottom: 2px;
+        }
+
+        .skill-level {
+            font-size: 12px;
+            color: rgba(0,0,0,.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.08);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 6px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #0a66c2;
+            color: white;
+            border-color: #0a66c2;
+        }
+
+        .btn-primary:hover {
+            background: #004182;
+            border-color: #004182;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #0a66c2;
+            border-color: #0a66c2;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(112,181,249,.1);
+        }
+
+        /* Activity Section */
+        .activity-item {
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-header {
+            font-size: 12px;
+            color: rgba(0,0,0,.6);
+            margin-bottom: 8px;
+        }
+
+        .activity-content {
+            font-size: 14px;
+            color: rgba(0,0,0,.9);
+            line-height: 1.4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .profile-details {
+                margin-left: 0;
+                margin-top: 88px;
+                text-align: center;
+            }
+
+            .profile-picture {
+                position: static;
+                margin: 0 auto -76px auto;
+                transform: translateY(-76px);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-headline {
+                font-size: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">in</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Profile Section -->
+            <section id="home" class="profile-section">
+                <div class="cover-photo"></div>
+                <div class="profile-info">
+                    <div class="profile-picture">YN</div>
+                    <div class="profile-details">
+                        <h1 class="profile-name">Your Name</h1>
+                        <p class="profile-headline">Full Stack Developer | React | Node.js | Python</p>
+                        <p class="profile-location">San Francisco Bay Area · <a href="#" class="stat">Contact info</a></p>
+                        <div class="profile-stats">
+                            <a href="#" class="stat">500+ connections</a>
+                            <a href="#" class="stat">Open to work</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Buttons -->
+            <section class="contact-section">
+                <div class="contact-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <span>Connect</span>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <span>Message</span>
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <span>More</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">About</h2>
+                </div>
+                <div class="section-content">
+                    <p class="about-text">
+                        Passionate Full Stack Developer with 3+ years of experience building scalable web applications. 
+                        Specialized in React, Node.js, and cloud technologies. I thrive on solving complex problems and 
+                        creating user-centric solutions that make a real impact. Currently focused on modern web 
+                        development practices, microservices architecture, and contributing to open source projects.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Experience/Projects Section -->
+            <section id="experience" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Experience</h2>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-logo">FS</div>
+                        <div class="experience-details">
+                            <h3>Full Stack Developer</h3>
+                            <p class="experience-company">TechCorp Solutions</p>
+                            <p class="experience-duration">Jan 2022 - Present · 2 yrs 8 mos</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Led development of customer-facing web applications serving 10K+ users. Implemented responsive 
+                        designs, optimized performance, and integrated third-party APIs. Collaborated with cross-functional 
+                        teams to deliver features on time and within scope.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-logo">FE</div>
+                        <div class="experience-details">
+                            <h3>Frontend Developer</h3>
+                            <p class="experience-company">StartupXYZ</p>
+                            <p class="experience-duration">Jun 2020 - Dec 2021 · 1 yr 7 mos</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Developed and maintained responsive web applications using React and Vue.js. Worked closely with 
+                        design team to implement pixel-perfect UI components. Improved application performance by 40% 
+                        through code optimization and lazy loading.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SCSS</span>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="experience-logo">JD</div>
+                        <div class="experience-details">
+                            <h3>Junior Developer</h3>
+                            <p class="experience-company">WebDev Agency</p>
+                            <p class="experience-duration">Jan 2020 - May 2020 · 5 mos</p>
+                        </div>
+                    </div>
+                    <p class="experience-description">
+                        Built responsive websites for small businesses using HTML, CSS, and JavaScript. Gained experience 
+                        in client communication, project management, and modern development workflows. Delivered 15+ 
+                        projects with high client satisfaction.
+                    </p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">WordPress</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon">JS</div>
+                        <div class="skill-info">
+                            <h4>JavaScript</h4>
+                            <p class="skill-level">Expert</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">R</div>
+                        <div class="skill-info">
+                            <h4>React</h4>
+                            <p class="skill-level">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">N</div>
+                        <div class="skill-info">
+                            <h4>Node.js</h4>
+                            <p class="skill-level">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">P</div>
+                        <div class="skill-info">
+                            <h4>Python</h4>
+                            <p class="skill-level">Intermediate</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">M</div>
+                        <div class="skill-info">
+                            <h4>MongoDB</h4>
+                            <p class="skill-level">Advanced</p>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">A</div>
+                        <div class="skill-info">
+                            <h4>AWS</h4>
+                            <p class="skill-level">Intermediate</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Section -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Activity</h2>
+                </div>
+                <div class="activity-item">
+                    <p class="activity-header">You posted this • 1 week ago</p>
+                    <p class="activity-content">
+                        Just completed a challenging project implementing microservices architecture. Learned so much 
+                        about Docker, Kubernetes, and service mesh patterns. Excited to apply these concepts to future projects!
+                    </p>
+                </div>
+                <div class="activity-item">
+                    <p class="activity-header">You shared this • 2 weeks ago</p>
+                    <p class="activity-content">
+                        Great article about React 18 features and concurrent rendering. The new useTransition hook is 
+                        a game-changer for performance optimization. #React #WebDevelopment
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
